@@ -44,5 +44,3 @@
 本软件中的频谱显示使用了 [WPF Sound Visualization Library](http://wpfsvl.codeplex.com/)。
 
 
-## [软件主页](http://www.kfstorm.com/blog/doubanfm)
-
