@@ -4,7 +4,7 @@
 library
 C#
 .cs
-C:\C#\DouBanFM_V2\SmokeMusic.Modules.Notify\obj\Debug\
+C:\C#\DouBanFM\DouBanFM_WPF\SmokeMusic.Modules.Notify\obj\Debug\
 SmokeMusic.Modules.Notify
 none
 false
@@ -12,9 +12,9 @@ DEBUG;TRACE
 
 1-1453881430
 
-9-708805798
-22-317983532
+101505264991
+22-1438563316
 Views\Notify.xaml;
 
-False
+True
 

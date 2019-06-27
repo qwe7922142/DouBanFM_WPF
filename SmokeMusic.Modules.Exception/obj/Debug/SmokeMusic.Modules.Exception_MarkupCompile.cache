@@ -4,7 +4,7 @@
 library
 C#
 .cs
-C:\C#\DouBanFM_V2\SmokeMusic.Modules.Exception\obj\Debug\
+C:\C#\DouBanFM\DouBanFM_WPF\SmokeMusic.Modules.Exception\obj\Debug\
 SmokeMusic.Modules.Exception
 none
 false
@@ -12,8 +12,8 @@ DEBUG;TRACE
 
 11897365892
 
-7-1374813096
-18-1419884740
+8839257693
+18935907431
 Views\ExceptionWindow.xaml;
 
 False
