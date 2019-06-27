@@ -1,0 +1,25 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:prism="http://www.codeplex.com/prism"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Taskbar="http://www.hardcodet.net/taskbar"
+             xmlns:Triggers="clr-namespace:SmokeMusic.Modules.Notify.Triggers"
+             xmlns:ViewModels="clr-namespace:SmokeMusic.Modules.Notify.ViewModels" x:Class="SmokeMusic.Modules.Notify.Views.Notify"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.DataContext>
+        <ViewModels:NotifyViewModel/>
+    </UserControl.DataContext>
+    <Grid>
+        <Taskbar:TaskbarIcon Visibility="Visible" IconSource="/SmokeMusic.Modules.Notify;component/Images/icon.ico">
+            <i:Interaction.Triggers>
+                <prism:InteractionRequestTrigger SourceObject="{Binding ShowErrorRequest}">
+                    <Triggers:ShowErrorTrigger/>
+                </prism:InteractionRequestTrigger>
+            </i:Interaction.Triggers>
+        </Taskbar:TaskbarIcon>
+    </Grid>
+</UserControl>

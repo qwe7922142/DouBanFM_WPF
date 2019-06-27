@@ -1,0 +1,186 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+             xmlns:prism="http://www.codeplex.com/prism"             
+             xmlns:Triggers="clr-namespace:SmokeMusic.Modules.Player.Triggers"
+             xmlns:Converters="clr-namespace:SmokeMusic.Modules.Player.Converters"
+             xmlns:SmokeCommonConverters="clr-namespace:SmokeMusic.Common.Converters;assembly=SmokeMusic.Common"
+             xmlns:Behaviors="clr-namespace:SmokeMusic.Modules.Player.Behaviors"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:ViewModels="clr-namespace:SmokeMusic.Modules.Player.ViewModels" x:Class="SmokeMusic.Modules.Player.Views.Player" 
+             mc:Ignorable="d" 
+             Name="userControl"
+             d:DesignHeight="280" d:DesignWidth="300">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/SmokeMusic.Modules.Player;component/Styles/Style.xaml"/>
+                <ResourceDictionary Source="/SmokeMusic.Modules.Player;component/Styles/Storyboard.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Converters:DurationToTimeConverter x:Key="DurationToTimeConverter"/>
+            <SmokeCommonConverters:OppositeConverter x:Key="OppositeConverter"/>
+        </ResourceDictionary>        
+    </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="Mouse.MouseEnter" SourceName="BdVolumeControl">
+            <BeginStoryboard x:Name="OnVolumeControlMouseEnter_BeginStoryboard" Storyboard="{DynamicResource OnVolumeControlMouseEnter}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Mouse.MouseLeave" SourceName="BdVolumeControl">
+            <BeginStoryboard x:Name="OnVolumeControlMouseLeave_BeginStoryboard" Storyboard="{DynamicResource OnVolumeControlMouseLeave}"/>
+        </EventTrigger>
+    </UserControl.Triggers>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <MediaElement LoadedBehavior="Manual" x:Name="mePlayer" Visibility="Collapsed" Source="{Binding CurrentSong.Url}" Volume="{Binding Volumn}">
+            <i:Interaction.Behaviors>
+                <Behaviors:WatchProgressBehavior Command="{Binding ProgressChangedCommand}"/>
+            </i:Interaction.Behaviors>
+            <i:Interaction.Triggers>
+                <prism:InteractionRequestTrigger SourceObject="{Binding MediaStateRequest}">
+                    <Triggers:PlayerOrPauseAction/>
+                </prism:InteractionRequestTrigger>
+                <i:EventTrigger EventName="MediaOpened">
+                    <i:InvokeCommandAction Command="{Binding MediaOpenedCommand}" CommandParameter="{Binding ElementName=mePlayer}"/>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="MediaEnded">
+                    <i:InvokeCommandAction Command="{Binding NextSongCommand}"/>
+                </i:EventTrigger>
+     
+            </i:Interaction.Triggers>
+        </MediaElement>
+        <Grid x:Name="SongInfoPanel" DataContext="{Binding CurrentSong}" TextOptions.TextFormattingMode="Ideal" VerticalAlignment="Top" Height="120" RenderTransformOrigin="0.5,0.5">
+            <i:Interaction.Behaviors>
+                <Behaviors:ChangeSongInfoBehavior/>
+            </i:Interaction.Behaviors>
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Grid.RenderTransform>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Viewbox Margin="0,1" HorizontalAlignment="Left" StretchDirection="DownOnly">
+                <TextBlock Name="SongTitle" FontSize="50" VerticalAlignment="Center" Text="豆瓣电台" Foreground="White"/>
+            </Viewbox>
+            <Viewbox Margin="0,1" Grid.Row="1" HorizontalAlignment="Left" StretchDirection="DownOnly">
+                <TextBlock Name="Artist" FontSize="20" VerticalAlignment="Center" Foreground="White"/>
+            </Viewbox>
+            <Viewbox Margin="0,1" Grid.Row="2" HorizontalAlignment="Left" StretchDirection="DownOnly">
+                <TextBlock Name="Album" VerticalAlignment="Center" FontSize="20" Foreground="White" />
+            </Viewbox>
+        </Grid>
+        <Grid x:Name="EnhancementsPanel" Grid.Row="1" Margin="0,5" HorizontalAlignment="Right" Height="24" ClipToBounds="True">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid x:Name="SharePanel">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.Triggers>
+                    <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetName="Shares" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.5"/>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Shares" Storyboard.TargetProperty="Width">
+                                    <DiscreteDoubleKeyFrame KeyTime="0" Value="{x:Static sys:Double.NaN}"/>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetName="Shares" Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:1"/>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Shares" Storyboard.TargetProperty="Width">
+                                    <DiscreteDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Grid.Triggers>
+                <Viewbox StretchDirection="DownOnly" HorizontalAlignment="Right">
+                    <StackPanel x:Name="Shares" Height="24" Width="0" Opacity="0" Orientation="Horizontal">
+                        <Button Style="{DynamicResource ShareDoubanStyle}"/>
+                        <Button Style="{DynamicResource ShareWeiboStyle}"/>
+                        <Button Style="{DynamicResource ShareMsnStyle}"/>
+                        <Button Style="{DynamicResource ShareKaixinStyle}"/>
+                        <Button Style="{DynamicResource ShareRenenStyle}"/>
+                        <Button Style="{DynamicResource ShareQzoneStyle}"/>
+                        <Button Style="{DynamicResource ShareTencentWeiboStyle}"/>
+                        <Button Style="{DynamicResource ShareFanfouStyle}"/>
+                        <Button Style="{DynamicResource ShareFacebookStyle}"/>
+                        <Button Style="{DynamicResource ShareTwitterStyle}"/>
+                    </StackPanel>
+                </Viewbox>
+                <Button x:Name="BtnCopyUrl" Grid.Column="1" Style="{DynamicResource ShareStyle}" ToolTip="分享（点击直接复制地址）" Visibility="{Binding ShareSetting.EnableOneKeyShare}"/>
+                <Button x:Name="BtnOneKeyShare" Grid.Column="1" Style="{DynamicResource ShareStyle}" ToolTip="一键分享" Visibility="{Binding ShareSetting.EnableOneKeyShare}"/>
+            </Grid>
+            <Button x:Name="BtnDownloadSearch" Grid.Column="1" Style="{DynamicResource SearchStyle}" ToolTip="搜索下载"/>
+            <CheckBox x:Name="CheckBoxShowLyrics" Grid.Column="2" IsChecked="{Binding Settings.ShowLyrics}" Style="{DynamicResource ShowLyricsStyle}"/>
+            <Border x:Name="BdVolumeControl" Grid.Column="3" Background="Transparent" Margin="0,0,-65,0">
+                <Viewbox StretchDirection="DownOnly">
+                    <Grid MinWidth="120" Height="40" Width="150">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="10"/>
+                        </Grid.ColumnDefinitions>
+                        <CheckBox x:Name="Loudspeaker" IsChecked="{Binding IsMuted, ElementName=mePlayer}" Style="{DynamicResource LoudspeakerStyle}"/>
+                        <Slider Grid.Column="2" Maximum="1" LargeChange="0.1" SmallChange="0.01" Value="{Binding Volumn, Mode=TwoWay}"/>
+                    </Grid>
+                </Viewbox>
+            </Border>
+        </Grid>
+        <Grid Grid.Row="2" VerticalAlignment="Bottom" Margin="0,2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="{Binding CurrentTime,Converter={StaticResource DurationToTimeConverter}}" FontSize="18" Foreground="White"/>
+            <TextBlock Grid.Column="1" x:Name="TotalTime" FontSize="18" HorizontalAlignment="Right" Foreground="White" Text="{Binding TotalTime,Converter={StaticResource DurationToTimeConverter}}"/>
+        </Grid>
+        <Slider x:Name="Slider" Grid.Row="3" Margin="0,5" Style="{StaticResource SliderStyleForProgress}" Foreground="{Binding Background}" Minimum="0" Maximum="{Binding TotalTime.TotalMilliseconds}" Value="{Binding CurrentTime.TotalMilliseconds, Mode=OneWay}" Opacity="0.6"/>
+        <Grid Grid.Row="4" HorizontalAlignment="Center" Height="50" VerticalAlignment="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="38" />
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="38" />
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="32" />
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="38"/>
+            </Grid.ColumnDefinitions>
+            <CheckBox Grid.Column="0" Style="{StaticResource LikeStyle}" IsChecked="{Binding IsLiked}" IsEnabled="{Binding IsLikedEnabled}" />
+            <Button Grid.Column="2" Style="{StaticResource NeverStyle}" IsEnabled="{Binding IsNeverEnabled}" />
+            <CheckBox Grid.Column="4" Style="{StaticResource PauseStyle}" IsChecked="{Binding IsPlaying}" />
+            <Button Grid.Column="6" Style="{StaticResource NextStyle}" Command="{Binding NextSongCommand}"/>
+        </Grid>
+    </Grid>
+</UserControl>

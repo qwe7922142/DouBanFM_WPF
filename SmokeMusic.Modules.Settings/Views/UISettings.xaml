@@ -1,0 +1,84 @@
+﻿<Window x:Class="SmokeMusic.Modules.Settings.Views.UISettings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:CommonBehavior="clr-namespace:SmokeMusic.Common.Behaviors;assembly=SmokeMusic.Common"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="{Binding Title}" SizeToContent="WidthAndHeight"
+        WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None" 
+        Template="{DynamicResource ChildWindowBaseTemplate}" 
+        Background="#FF1167A9" Opacity="0.9" Foreground="White">
+    <i:Interaction.Behaviors>
+        <CommonBehavior:ChildWindowBehavior/>
+        <CommonBehavior:DragWindowBehavior/>
+    </i:Interaction.Behaviors>
+    <Grid Width="300" Height="Auto" Margin="10">
+        <StackPanel>
+            <CheckBox Margin="0,2" VerticalAlignment="Center" IsChecked="{Binding ShowBalloonWhenChangingSongs}" Content="换歌时弹出气泡"/>
+            <CheckBox Margin="0,2" x:Name="CheckBoxTopMost" VerticalAlignment="Center" IsChecked="{Binding AlwaysInFront}" Content="总在最前"/>
+            <CheckBox Margin="0,2" x:Name="CheckBoxAlwaysShowNotifyIcon" VerticalAlignment="Center" IsChecked="{Binding AlwaysShowNotifyIcon}" Content="总是显示托盘图标" />
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <RadioButton Margin="0,2" x:Name="RadioButtonSlideCoverWhenMouseMove" Content="当鼠标移动到封面上时滑动封面" IsChecked="{Binding Settings.SlideCoverWhenMouseMove, Mode=TwoWay}" VerticalAlignment="Center"/>
+                <CheckBox x:Name="CheckBoxOpenAlbumInfoWhenClickCover" Grid.Row="1" Content="点击封面时打开豆瓣资料页面" IsChecked="{Binding Settings.OpenAlbumInfoWhenClickCover, Mode=TwoWay}" IsEnabled="{Binding IsChecked, ElementName=RadioButtonSlideCoverWhenMouseMove}" VerticalAlignment="Center" Margin="20,2,2,3"/>
+                <RadioButton Margin="0,2" Grid.Row="2" IsChecked="{Binding Settings.SlideCoverWhenMouseMove, Mode=TwoWay}" x:Name="RadioButtonSlideCoverWhenClick" Content="当鼠标点击封面时滑动封面" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock VerticalAlignment="Center">主界面缩放</TextBlock>
+                <Slider Grid.Column="1" Value="{Binding Settings.ScaleTransform, Mode=TwoWay}" Minimum="0.5" Maximum="1.5" SmallChange="0.01" LargeChange="0.1" Margin="0,10, 10, 10"/>
+                <Button Grid.Column="2" x:Name="BtnScaleTransformReset" Height="30" Width="80">重置</Button>
+            </Grid>
+            <Grid Height="40">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock VerticalAlignment="Center">主界面字体</TextBlock>
+            </Grid>
+            <GroupBox Header="窗口背景" Margin="0,2">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock VerticalAlignment="Center" Margin="5,0">透明度</TextBlock>
+                    <Slider Grid.Column="1" Value="{Binding WindowOpacity}" Minimum="0" Maximum="0.99" LargeChange="0.1" SmallChange="0.01"/>
+                    <CheckBox Grid.Row="1" VerticalAlignment="Center" Margin="5,0">手动指定颜色</CheckBox>
+                </Grid>
+            </GroupBox>
+            <GroupBox Margin="0,2">
+                <GroupBox.Header>
+                    <CheckBox IsChecked="{Binding Settings.ShowSpectrum}">频谱</CheckBox>
+                </GroupBox.Header>
+                <StackPanel>
+                    <Label FontSize="11">会占用一定CPU</Label>
+                    <Grid IsEnabled="{Binding Settings.ShowSpectrum}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock VerticalAlignment="Center" Margin="5,0">透明度</TextBlock>
+                        <Slider Grid.Column="1" Minimum="0" Maximum="1" LargeChange="0.1" SmallChange="0.01" Margin="0,2"/>
+                        <TextBlock Grid.Row="1" VerticalAlignment="Center" Margin="5,0">颜色</TextBlock>
+                    </Grid>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+    </Grid>
+</Window>

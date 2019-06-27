@@ -1,0 +1,47 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:ViewModels="clr-namespace:SmokeMusic.Modules.Player.ViewModels" x:Class="SmokeMusic.Modules.Player.Views.Title" 
+             mc:Ignorable="d" 
+             d:DesignHeight="20" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/SmokeMusic.Modules.Player;component/Styles/Style.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <UserControl.DataContext>
+        <ViewModels:TitleViewModel/>
+    </UserControl.DataContext>
+    <Grid Height="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock TextTrimming="CharacterEllipsis" Foreground="White" FontSize="14.667" FontStretch="Normal" Text="{Binding CurrentChannel.Name}" />
+        <StackPanel Grid.Column="1" x:Name="WindowStateControls" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="ButtonMinimize" Style="{DynamicResource MinimizeStyle}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <ei:ChangePropertyAction TargetObject="{Binding RelativeSource={RelativeSource AncestorType=Window,Mode=FindAncestor}}" PropertyName="WindowState" Value="Minimized"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <Border Width="10"/>
+            <Button x:Name="ButtonToNotifyIcon" Style="{DynamicResource ToNotifyIconStyle}"/>
+            <Border Width="10"/>
+            <Button x:Name="ButtonExit" Style="{DynamicResource ExitStyle}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <ei:CallMethodAction MethodName="Close" TargetObject="{Binding RelativeSource={RelativeSource AncestorType=Window,Mode=FindAncestor}}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

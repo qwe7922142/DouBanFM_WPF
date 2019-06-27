@@ -1,0 +1,23 @@
+﻿<Application x:Class="SmokeMusic.Client.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:Converters="clr-namespace:SmokeMusic.Common.Converters;assembly=SmokeMusic.Common">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/SmokeMusic.Common;component/Styles/Brush.xaml"/>
+                <ResourceDictionary Source="/SmokeMusic.Common;component/Styles/ButtonStyle.xaml"/>
+                <ResourceDictionary Source="/SmokeMusic.Common;component/Styles/CheckBoxStyle.xaml"/>
+                <ResourceDictionary Source="/SmokeMusic.Common;component/Styles/ComboBoxStyle.xaml"/>
+                <ResourceDictionary Source="/SmokeMusic.Common;component/Styles/LabelStyle.xaml"/>
+                <ResourceDictionary Source="/SmokeMusic.Common;component/Styles/ListboxStyle.xaml"/>
+                <ResourceDictionary Source="/SmokeMusic.Common;component/Styles/RadioButtonStyle.xaml"/>
+                <ResourceDictionary Source="/SmokeMusic.Common;component/Styles/ScrollViewerStyle.xaml"/>
+                <ResourceDictionary Source="/SmokeMusic.Common;component/Styles/SliderStyle.xaml"/>
+                <ResourceDictionary Source="/SmokeMusic.Common;component/Styles/TabControlStyle.xaml"/>
+                <ResourceDictionary Source="/SmokeMusic.Common;component/Styles/WindowStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Converters:StringToColorConverter x:Key="StringToColorConverter"/>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

@@ -1,0 +1,84 @@
+﻿<Window x:Class="SmokeMusic.Modules.Info.Views.Help"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:CommonBehavior="clr-namespace:SmokeMusic.Common.Behaviors;assembly=SmokeMusic.Common"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="帮助" Height="480" Width="640" Template="{DynamicResource ChildWindowBaseTemplate}" WindowStartupLocation="CenterScreen">      
+    <i:Interaction.Behaviors>
+        <CommonBehavior:ChildWindowBehavior/>
+        <CommonBehavior:DragWindowBehavior/>
+    </i:Interaction.Behaviors>
+    <Grid>
+        <FlowDocumentReader Foreground="White" ViewingMode="Scroll" IsFindEnabled="False" TextOptions.TextFormattingMode="Ideal">
+            <FlowDocument>
+                <FlowDocument.Resources>
+                    <Style x:Key="TitleStyleKey" TargetType="{x:Type Paragraph}">
+                        <Setter Property="FontSize" Value="24"/>
+                    </Style>
+                    <Style x:Key="Header1StyleKey" TargetType="{x:Type Paragraph}">
+                        <Setter Property="FontSize" Value="18"/>
+                    </Style>
+                    <Style x:Key="Header2StyleKey" TargetType="{x:Type Paragraph}">
+                        <Setter Property="FontSize" Value="16"/>
+                    </Style>
+                    <Style x:Key="Header3StyleKey" TargetType="{x:Type Paragraph}">
+                        <Setter Property="FontSize" Value="14"/>
+                    </Style>
+                    <Style x:Key="TextStyleKey" TargetType="{x:Type Paragraph}">
+                        <Setter Property="FontSize" Value="12"/>
+                        <Setter Property="TextIndent" Value="24"/>
+                    </Style>
+                    <Style x:Key="HyperlinkStyleKey" TargetType="{x:Type Hyperlink}">
+                        <Setter Property="Foreground" Value="White"/>
+                    </Style>
+                </FlowDocument.Resources>
+                <Paragraph TextAlignment="Center" Style="{StaticResource TitleStyleKey}">烟灰灰音乐盒帮助文档</Paragraph>
+                <Section>
+                    <Paragraph Style="{StaticResource Header1StyleKey}">为什么点击分享到其他网站的链接后不能听到我分享的那首音乐？</Paragraph>
+                    <Paragraph Style="{StaticResource TextStyleKey}">这是因为豆瓣对网页做了手脚，会查看你是从哪个网站过来的，从某些网站（比如人人）进入豆瓣电台的网站会转到豆瓣电台的首页（也就是和直接在浏览器里输入douban.fm一样）。可以把分享的链接复制出来，粘贴到浏览器地址栏里打开，就可以听到分享的歌曲了。</Paragraph>
+                </Section>
+                <Section>
+                    <Paragraph Style="{StaticResource Header1StyleKey}">为什么本来已经登录了，并且勾选了下次自动登录，结果下次打开软件时却没有自动登录？</Paragraph>
+                    <Paragraph Style="{StaticResource TextStyleKey}">一般情况下是因为你在浏览器中注销过豆瓣的帐号导致的，豆瓣规定得很严，只要在一个地方注销了，所有已登录的地方都会注销（比如同时使用多个浏览器登录豆瓣，然后在其中一个浏览器注销掉，这时其他浏览器也会注销），本软件也不例外。所以只能尽量避免在任何地方注销豆瓣了。</Paragraph>
+                </Section>
+                <Section>
+                    <Paragraph Style="{StaticResource Header1StyleKey}">程序崩溃了……</Paragraph>
+                    <Paragraph Style="{StaticResource TextStyleKey}">如果发生了程序崩溃的情况，请
+                        <Hyperlink Tag="#" Style="{StaticResource HyperlinkStyleKey}">向我反应</Hyperlink> ，尽量描述清楚当时正在进行什么操作，正在听什么频道等信息，最好附上错误日志。
+                        <Hyperlink Tag="#" Style="{StaticResource HyperlinkStyleKey}">查看错误日志的方法</Hyperlink>
+                    </Paragraph>
+                </Section>
+                <Section>
+                    <Paragraph Style="{StaticResource Header1StyleKey}">修改主界面字体后经常看不清字，怎么办？</Paragraph>
+                    <Paragraph Style="{StaticResource TextStyleKey}">可以把主界面缩放调大一点，字会清晰很多。</Paragraph>
+                </Section>
+                <Section>
+                    <Paragraph Style="{StaticResource Header1StyleKey}">为什么登录后就无法使用了，需要重置设置才能继续使用？</Paragraph>
+                    <Paragraph Style="{StaticResource TextStyleKey}">请打开浏览器进入
+                        <Hyperlink Tag="http://www.douban.com/" Style="{StaticResource HyperlinkStyleKey}">www.douban.com</Hyperlink> 并登录，检查一下自己的帐号是否存在异常，有可能是帐号被锁定，或者帐号未激活。
+                    </Paragraph>
+                </Section>
+                <Section>
+                    <Paragraph></Paragraph>
+                    <Paragraph TextIndent="0" Style="{StaticResource TextStyleKey}">声明：本软件为第三方客户端，并非豆瓣FM官方客户端。
+                        <LineBreak/>
+                        软件作者：
+                        <Hyperlink Tag="http://www.kfstorm.com/blog/" Style="{StaticResource HyperlinkStyleKey}">Smoke</Hyperlink>
+                        <LineBreak/>
+                        软件主页：
+                        <Hyperlink Tag="http://www.kfstorm.com/blog/doubanfm" Style="{StaticResource HyperlinkStyleKey}">http://www.scheshan.com</Hyperlink>
+                        <LineBreak/>
+                        网页版FAQ：
+                        <Hyperlink Tag="#" Style="{StaticResource HyperlinkStyleKey}">http://www.scheshan.com/</Hyperlink>
+                        <LineBreak/>
+                        豆瓣FM官方网站：
+                        <Hyperlink Tag="http://douban.fm" Style="{StaticResource HyperlinkStyleKey}">http://douban.fm</Hyperlink>
+                        <LineBreak/>
+                        豆瓣FM使用帮助和支持：
+                        <Hyperlink Tag="http://douban.fm/support" Style="{StaticResource HyperlinkStyleKey}">http://douban.fm/support</Hyperlink>
+                    </Paragraph>
+                </Section>
+            </FlowDocument>
+        </FlowDocumentReader>
+    </Grid>
+</Window>

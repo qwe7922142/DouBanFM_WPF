@@ -1,0 +1,37 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Settings="clr-namespace:SmokeMusic.Modules.Settings"
+             xmlns:CommonConverters="clr-namespace:SmokeMusic.Common.Converters;assembly=SmokeMusic.Common"
+             xmlns:ViewModels="clr-namespace:SmokeMusic.Modules.Settings.ViewModels" x:Class="SmokeMusic.Modules.Settings.Views.Settings" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.DataContext>
+        <ViewModels:SettingsViewModel/>
+    </UserControl.DataContext>
+    <UserControl.Resources>
+        <CommonConverters:OppositeConverter x:Key="OppositeConverter"/>
+    </UserControl.Resources>
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ItemsControl ItemsSource="{Binding SettingsCommandList}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Width="100" VerticalAlignment="Center" Margin="10"/>
+                </ItemsPanelTemplate>                
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Button Margin="0,0,0,10" Content="{Binding Title}" Command="{Binding ShowCommand}" IsEnabled="{Binding IsShow, Converter={StaticResource OppositeConverter}}"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        
+        <Button x:Name="BtnResetSettings" Grid.Row="1" Width="100" Content="重置所有设置"/>
+    </Grid>
+</UserControl>

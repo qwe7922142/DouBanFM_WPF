@@ -1,0 +1,73 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ControlTemplate x:Key="HorizontalSliderControlTemplate" TargetType="{x:Type Slider}">
+        <Grid>
+            <Border x:Name="TrackBackground" Background="{TemplateBinding Background}">
+                <Rectangle x:Name="PART_SelectionRange" Visibility="Hidden"/>
+            </Border>
+            <Track x:Name="PART_Track">
+                <Track.DecreaseRepeatButton>
+                    <RepeatButton x:Name="LeftRepeatButton" Command="Slider.DecreaseLarge" Height="10" Style="{StaticResource stScrollBtn}" Background="#7FFFFFFF"/>
+                </Track.DecreaseRepeatButton>
+                <Track.IncreaseRepeatButton>
+                    <RepeatButton x:Name="RightRepeatButton" Command="Slider.IncreaseLarge" Height="10" Style="{StaticResource stScrollBtn}" Background="#7F000000"/>
+                </Track.IncreaseRepeatButton>
+                <Track.Thumb>
+                    <Thumb x:Name="Thumb" Width="15" Height="30" Style="{StaticResource stThumb}"/>
+                </Track.Thumb>
+            </Track>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsSelectionRangeEnabled" Value="True">
+                <Setter Property="Visibility" TargetName="PART_SelectionRange" Value="Visible"/>
+            </Trigger>
+            <Trigger Property="IsKeyboardFocused" Value="True">
+                <Setter Property="Foreground" TargetName="Thumb" Value="Blue"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" TargetName="Thumb" Value="#3FFFFFFF"/>
+                <Setter Property="Background" TargetName="LeftRepeatButton" Value="#3FFFFFFF"/>
+                <Setter Property="Background" TargetName="RightRepeatButton" Value="#3FFFFFFF"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="VerticalSliderControlTemplate" TargetType="{x:Type Slider}">
+        <Grid>
+            <Border x:Name="TrackBackground" Background="{TemplateBinding Background}">
+                <Rectangle x:Name="PART_SelectionRange" Visibility="Hidden"/>
+            </Border>
+            <Track x:Name="PART_Track" Orientation="Vertical">
+                <Track.DecreaseRepeatButton>
+                    <RepeatButton x:Name="LeftRepeatButton" Command="Slider.DecreaseLarge" Width="10" Style="{StaticResource stScrollBtn}" Background="#7FFFFFFF"/>
+                </Track.DecreaseRepeatButton>
+                <Track.IncreaseRepeatButton>
+                    <RepeatButton x:Name="RightRepeatButton" Command="Slider.IncreaseLarge" Width="10" Style="{StaticResource stScrollBtn}" Background="#7F000000"/>
+                </Track.IncreaseRepeatButton>
+                <Track.Thumb>
+                    <Thumb x:Name="Thumb" Height="15" Width="30" Style="{StaticResource stThumb}"/>
+                </Track.Thumb>
+            </Track>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsSelectionRangeEnabled" Value="True">
+                <Setter Property="Visibility" TargetName="PART_SelectionRange" Value="Visible"/>
+            </Trigger>
+            <Trigger Property="IsKeyboardFocused" Value="True">
+                <Setter Property="Foreground" TargetName="Thumb" Value="Blue"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" TargetName="Thumb" Value="#3FFFFFFF"/>
+                <Setter Property="Background" TargetName="LeftRepeatButton" Value="#3FFFFFFF"/>
+                <Setter Property="Background" TargetName="RightRepeatButton" Value="#3FFFFFFF"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <Style TargetType="{x:Type Slider}">
+        <Setter Property="Template" Value="{StaticResource HorizontalSliderControlTemplate}"/>
+        <Style.Triggers>
+            <Trigger Property="Orientation" Value="Vertical">
+                <Setter Property="Template" Value="{StaticResource VerticalSliderControlTemplate}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

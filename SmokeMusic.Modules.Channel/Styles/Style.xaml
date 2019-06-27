@@ -1,0 +1,192 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:PresentationOptions="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="ChannelCategoryStyle" TargetType="{x:Type RadioButton}">
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="White"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RadioButton}">
+                    <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{TemplateBinding Padding}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Padding" Value="2"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#7FFFFFFF"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Foreground" Value="Black"/>
+                <Setter Property="Background" Value="White"/>
+            </Trigger>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Background" Value="#BFFFFFFF"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="BorderBrush" Value="#7FFFFFFF"/>
+                <Setter Property="Foreground" Value="#7FFFFFFF"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="ChannelItemStyle" TargetType="{x:Type ListBoxItem}">
+        <Setter Property="TextOptions.TextFormattingMode" Value="Ideal"/>
+        <!--<Setter Property="FontSize" Value="20"/>-->
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Width" Value="110"/>
+        <Setter Property="MinHeight" Value="70"/>
+        <Setter Property="Background" Value="{Binding (ItemsControl.AlternationIndex), Converter={StaticResource AlternationConverter}, RelativeSource={RelativeSource Self}}"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                    <Grid x:Name="grid" Background="{TemplateBinding Background}" RenderTransformOrigin="0.5,0.5">
+                        <Grid.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Grid.RenderTransform>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal">
+                                    <Storyboard PresentationOptions:Freeze="True">
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="1"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="1"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="CbFavorite">
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="OpacityMask.(LinearGradientBrush.GradientStops)[1].(GradientStop.Offset)" Storyboard.TargetName="CbFavorite">
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="OpacityMask.(LinearGradientBrush.GradientStops)[2].(GradientStop.Offset)" Storyboard.TargetName="CbFavorite">
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard PresentationOptions:Freeze="True">
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="1.2"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="1.2"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="CbFavorite" BeginTime="0:0:1">
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="OpacityMask.(LinearGradientBrush.GradientStops)[1].(GradientStop.Offset)" Storyboard.TargetName="CbFavorite" BeginTime="0:0:1">
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <CircleEase EasingMode="EaseOut"/>
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="OpacityMask.(LinearGradientBrush.GradientStops)[2].(GradientStop.Offset)" Storyboard.TargetName="CbFavorite" BeginTime="0:0:1">
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <CircleEase EasingMode="EaseOut"/>
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled"/>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="SelectionStates">
+                                <VisualState x:Name="Unselected"/>
+                                <VisualState x:Name="Selected">
+                                    <Storyboard AutoReverse="True" RepeatBehavior="Forever" PresentationOptions:Freeze="True">
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="border1">
+                                            <EasingColorKeyFrame KeyTime="0" Value="#7FFFFFFF"/>
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="SelectedUnfocused">
+                                    <Storyboard AutoReverse="True" RepeatBehavior="Forever" PresentationOptions:Freeze="True">
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="border1">
+                                            <EasingColorKeyFrame KeyTime="0" Value="#7FFFFFFF"/>
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="ValidationStates">
+                                <VisualState x:Name="Valid"/>
+                                <VisualState x:Name="InvalidFocused"/>
+                                <VisualState x:Name="InvalidUnfocused"/>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <ContentPresenter x:Name="contentPresenter" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        <Border x:Name="border1" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="Transparent"/>
+                        <CheckBox x:Name="CbFavorite" Width="16" Height="32" Margin="0,-2,8,0" HorizontalAlignment="Right" VerticalAlignment="Top" Opacity="0" Style="{DynamicResource FavoriteStyle}">
+                            <CheckBox.OpacityMask>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                    <GradientStop Offset="0" Color="White"/>
+                                    <GradientStop Offset="0" Color="White"/>
+                                    <GradientStop Offset="0" Color="Transparent"/>
+                                    <GradientStop Offset="1" Color="Transparent"/>
+                                </LinearGradientBrush>
+                            </CheckBox.OpacityMask>
+                        </CheckBox>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Panel.ZIndex" Value="1"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Margin" Value="3"/>
+        <Setter Property="BorderThickness" Value="5"/>
+    </Style>
+    
+    <Style x:Key="ChannelsStyle" TargetType="{x:Type ListBox}">
+        <Setter Property="AlternationCount" Value="12"/>
+        <Setter Property="ItemContainerStyle" Value="{StaticResource ChannelItemStyle}"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="ScrollViewer.CanContentScroll" Value="True"/>
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <WrapPanel>
+                    </WrapPanel>
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ItemTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}" FontSize="20" TextWrapping="Wrap" Padding="10" TextTrimming="CharacterEllipsis"/>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBox}">
+                    <ScrollViewer Focusable="false" Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}">
+                        <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                    </ScrollViewer>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Background" Value="Transparent"/>
+    </Style>
+</ResourceDictionary>

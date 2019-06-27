@@ -1,0 +1,83 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style TargetType="{x:Type Button}">
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="White"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{TemplateBinding Padding}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Padding" Value="2"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#7FFFFFFF"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Foreground" Value="Black"/>
+                <Setter Property="Background" Value="White"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="BorderBrush" Value="#7FFFFFFF"/>
+                <Setter Property="Foreground" Value="#7FFFFFFF"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="CustomButtonBaseStyle" TargetType="{x:Type ButtonBase}">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="#7F000000"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Foreground" Value="White"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Foreground" Value="#7F222222"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="CustomButtonStyle" BasedOn="{StaticResource CustomButtonBaseStyle}" TargetType="{x:Type Button}">
+    </Style>
+    <Style x:Key="SearchStyle" BasedOn="{StaticResource CustomButtonStyle}" TargetType="{x:Type Button}">
+        <Setter Property="ToolTip" Value="搜索"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Viewbox>
+                        <Canvas Width="256" Height="256" Clip="F1 M 0,0L 256,0L 256,256L 0,256L 0,0" Background="{TemplateBinding Background}">
+                            <Path Width="193.87" Height="201" Canvas.Left="31.5" Canvas.Top="31.5" Stretch="Fill" Fill="{TemplateBinding Foreground}" Data="F1 M 108,56C 79.2812,56 56,79.2812 56,108C 56,136.719 79.2812,160 108,160C 136.719,160 160,136.719 160,108C 160,79.2812 136.719,56 108,56 Z M 108,32C 149.974,32 184,66.0264 184,108C 184,122.615 179.874,136.267 172.724,147.854L 224.87,200L 192.87,232L 138.502,177.632C 129.165,181.727 118.848,184 108,184C 66.0263,184 32,149.974 32,108C 32,66.0264 66.0264,32 108,32 Z "/>
+                        </Canvas>
+                    </Viewbox>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style x:Key="CloseStyle" BasedOn="{StaticResource CustomButtonStyle}" TargetType="{x:Type Button}">
+        <Setter Property="ToolTip" Value="关闭"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Viewbox>
+                        <Canvas Width="256" Height="256" Clip="F1 M 0,0L 256,0L 256,256L 0,256L 0,0" Background="{TemplateBinding Background}">
+                            <Path Width="214.627" Height="214.627" Canvas.Left="20.6863" Canvas.Top="20.6863" Stretch="Fill" Fill="{TemplateBinding Foreground}" Data="M 20.6863,212.686L 105.373,128L 20.6863,43.3137L 43.3137,20.6863L 128,105.373L 212.686,20.6863L 235.314,43.3137L 150.627,128L 235.314,212.686L 212.686,235.314L 128,150.627L 43.3137,235.314L 20.6863,212.686 Z "/>
+                        </Canvas>
+                    </Viewbox>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
