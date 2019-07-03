@@ -59,7 +59,7 @@
     <Compile Include="Parameters.cs" />
     <Compile Include="Paths.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SmokeMusic\Logic\Models\SonglistInfo.cs" />
+    <Compile Include="Models\SonglistInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Framework.Common\Framework.Common.csproj">
