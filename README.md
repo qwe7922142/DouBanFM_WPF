@@ -19,9 +19,6 @@
 
 ![Snapshot3](https://raw.githubusercontent.com/kfstorm/DoubanFM/master/res/pic/DoubanFM_1.7.0_2_2.jpg)
 
-## 演示视频
-
-[第一版（1.2.4）](http://v.youku.com/v_show/id_XMzAwNDgyNjg0.html) [第二版（1.7.1）](http://v.youku.com/v_show/id_XMzQ0MDczMjQ4.html)
 
 ## 版权声明
 
