@@ -9,7 +9,7 @@
         xmlns:Behavior="clr-namespace:SmokeMusic.Client.Behaviors"
         
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-        Opacity="{Binding UISettings.WindowOpacity}"
+        Opacity="{Binding UISettings.WindowOpacity}" 
         Title="烟灰灰音乐盒" Height="300" Width="600" WindowStyle="None" Foreground="White" AllowsTransparency="True" WindowStartupLocation="CenterScreen">
     <i:Interaction.Behaviors>
         <CommonBehaviors:DragWindowBehavior/>

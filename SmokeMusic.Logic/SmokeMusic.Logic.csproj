@@ -47,8 +47,7 @@
     <Compile Include="Core\Search.cs" />
     <Compile Include="Core\Song.cs" />
     <Compile Include="Models\Channel.cs" />
-    <Compile Include="Models\ChannelList.cs" />
-    <Compile Include="Models\GroupChild.cs" />
+    <Compile Include="Models\Group.cs" />
     <Compile Include="Models\PlayRecord.cs" />
     <Compile Include="Models\PlaySourceInfo.cs" />
     <Compile Include="Models\SearchResult.cs" />

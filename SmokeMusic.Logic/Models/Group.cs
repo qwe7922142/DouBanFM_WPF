@@ -10,7 +10,7 @@ namespace SmokeMusic.Logic.Models
     /// 频道列表实体
     /// </summary>
     [DataContract]
-    public class GroupChild
+    public class Group
     {
         /// <summary>
         /// 私人频道列表
@@ -33,7 +33,7 @@ namespace SmokeMusic.Logic.Models
     public class Groups
     {
         [DataMember(Name = "groups")]
-        public List<GroupChild> ChannelGroups { get; set; }
+        public List<Group> ChannelGroups { get; set; }
 
     }
 

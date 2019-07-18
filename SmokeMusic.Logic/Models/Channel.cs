@@ -26,7 +26,7 @@ namespace SmokeMusic.Logic.Models
         /// 频道名称
         /// </summary>
         [DataMember(Name = "cover")]
-        public string Cover { get; set; }
+        public Uri Cover { get; set; }
         /// <summary>
         /// 频道名称
         /// </summary>

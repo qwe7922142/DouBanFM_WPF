@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:Converter="clr-namespace:SmokeMusic.Modules.Channel.Converters"
              xmlns:CommonConverters="clr-namespace:SmokeMusic.Common.Converters;assembly=SmokeMusic.Common"
              xmlns:ViewModels="clr-namespace:SmokeMusic.Modules.Channel.ViewModels" x:Class="SmokeMusic.Modules.Channel.Views.ChannelList" 
@@ -31,14 +30,14 @@
 
         <Grid x:Name="ChannelsContentGrid" Grid.Row="1">
             <ListBox x:Name="MyChannels" SelectedItem="{Binding CurrentChannel}" ItemsSource="{Binding MyChannelList,IsAsync=True}" Style="{DynamicResource ChannelsStyle}" >
-                <ListBox.RenderTransform>
+                <!--<ListBox.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
                         <SkewTransform/>
                         <RotateTransform/>
                         <TranslateTransform/>
                     </TransformGroup>
-                </ListBox.RenderTransform>
+                </ListBox.RenderTransform>-->
             </ListBox>
         </Grid>
         <Button Grid.Row="1" Content="重新加载频道"  VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="{Binding HasErrors, Converter={StaticResource BooleanToVisibilityConverter}}" Command="{Binding ReloadCommand}"/>
