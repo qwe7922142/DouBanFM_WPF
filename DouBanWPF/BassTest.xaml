@@ -1,0 +1,41 @@
+﻿<Window x:Class="DouBanWPF.BassTest"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="BassTest" Height="450" Width="800"
+        Loaded="Window_Loaded">
+    <StackPanel Orientation="Horizontal">
+
+        <!-- This StackPanel contains the MediaElement and the controls -->
+        <StackPanel HorizontalAlignment="Left" Margin="20" Width="500" Background="Black" >
+            <!-- To interactively stop, pause, and play the media, the LoadedBehavior 
+           property of the MediaElement must be set to "Manual". -->
+
+            <StackPanel Orientation="Horizontal">
+
+                <!-- Play button. -->
+                <Image Source="images/ui_play.gif"  MouseDown="OnMouseDownPlayMedia" Margin="5" />
+
+                <!-- Pause button. -->
+                <Image Source="images/UI_pause.gif" MouseDown="OnMouseDownPauseMedia" Margin="5" />
+
+                <!-- Stop button. -->
+                <Image Source="images/UI_stop.gif" MouseDown="OnMouseDownStopMedia" Margin="5" />
+
+                <!-- Volume slider. This slider allows a Volume range between 0 and 1. -->
+                <TextBlock Foreground="White" VerticalAlignment="Center" Margin="5"  >Volume</TextBlock>
+                <Slider Name="volumeSlider" VerticalAlignment="Center" ValueChanged="ChangeMediaVolume" 
+         Minimum="0" Maximum="1" Value="0.5" Width="70"/>
+
+                <!-- Seek to slider. Ths slider allows you to jump to different parts of the media playback. -->
+                <TextBlock Foreground="White" Margin="5"  VerticalAlignment="Center">Seek To</TextBlock>
+                <Slider Name="timelineSlider" Margin="5"  Width="172"  MouseLeftButtonDown="TimelineSlider_MouseLeftButtonDown" MouseLeftButtonUp="TimelineSlider_MouseLeftButtonUp" />
+                       
+            </StackPanel>
+        </StackPanel>
+        <TextBlock TextWrapping="Wrap" Text="TextBlock" Margin="0,391,0,0" Width="165" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <!-- This StackPanel contains all the demonstration code -->
+    </StackPanel>
+</Window>
