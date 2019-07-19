@@ -146,7 +146,7 @@
                             Foreground="White"
                             Text="大老张" />
                         <!--后期看能不能登录微信绑定豆瓣上-->
-                        <Path
+    <Path
                             Width="10"
                             Height="10"
                             Margin="15,0,0,0"
@@ -154,74 +154,75 @@
                             Fill="White"
                             Stretch="Uniform" />
 
-                    </WrapPanel>
-                </Button>
-                <Button  
+    </WrapPanel>
+    </Button>
+    <Button  
                         Width="40"
                         Height="40"
                         Margin="10,0,0,0"
                         Style="{StaticResource AccentCircleButtonStyle}">
-                    <iconPacks:PackIconModern Kind="ClothesShirt"  Height="22" Width="22" />
-                </Button>
-                <Button Width="40"
+        <iconPacks:PackIconModern Kind="ClothesShirt"  Height="22" Width="22" />
+    </Button>
+    <Button Width="40"
                         Height="40"
                          Margin="10,0,0,0"
                         Style="{StaticResource AccentCircleButtonStyle}">
-                    <iconPacks:PackIconModern Kind="Settings" Height="22" Width="22" />
-                </Button>
-                <Border
+        <iconPacks:PackIconModern Kind="Settings" Height="22" Width="22" />
+    </Button>
+    <Border
                     Width="1"
                     Height="40"
                     Margin="14,0,10,0"
                     Background="#FF054D08" />
-                <Button x:Name="ButtonMin"
+    <Button x:Name="ButtonMin"
                         Width="40"
                         Height="40"
                         Margin="10,0,0,0"
-                        Command="SystemCommands.MinimizeWindowCommand"
+                        Click="ButtonMin_Click"
                         Style="{StaticResource AccentCircleButtonStyle}">
-                    <iconPacks:PackIconMaterial Kind="WindowMinimize" Height="22" Width="22" />
-                </Button>
-                <Button x:Name="ButtonMax"
+        <iconPacks:PackIconMaterial Kind="WindowMinimize" Height="22" Width="22" />
+    </Button>
+    <Button x:Name="ButtonMax"
                         Width="40"
                         Height="40"
                         Margin="10,0,0,0"
-                        Command="SystemCommands.MaximizeWindowCommand"
+                        Click="ButtonMax_Click"
                         Style="{StaticResource AccentCircleButtonStyle}">
-                   <iconPacks:PackIconMaterial Kind="WindowMaximize" Height="22" Width="22"/>
-                </Button>
-                 <Button x:Name="ButtonRestore"
-                        Width="40"
-                        Height="40"
-                         Margin="10,0,0,0"
-                         Command="SystemCommands.RestoreWindowCommand"
-                        Style="{StaticResource AccentCircleButtonStyle}">
-                     <iconPacks:PackIconMaterial Kind="WindowRestore" Height="22" Width="22" />
-                </Button>
-                 <Button x:Name="ButtonClose"
-                     Width="40"
-                        Height="40"
-                         Margin="10,0,0,0"
-                         Command="SystemCommands.CloseWindowCommand"
-                        Style="{StaticResource AccentCircleButtonStyle}">
-                    <iconPacks:PackIconMaterial Kind="WindowClose" Height="22" Width="22" />
-                </Button>
-            </StackPanel>
-        </Grid>
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions >
-                <ColumnDefinition Width="200" MinWidth="200" />
-                <ColumnDefinition Width="*" MinWidth="822" />
-            </Grid.ColumnDefinitions>
-            <Grid >
-                <ScrollViewer
+        <iconPacks:PackIconMaterial Kind="WindowMaximize" Height="22" Width="22"/>
+    </Button>
+    <Button x:Name="ButtonNormal"
+                                        Width="40"
+                                        Height="40"
+                                        Margin="10,0,0,0"
+                                        Visibility="Collapsed"
+                                        Click="ButtonNormal_Click"
+                                        Style="{StaticResource AccentCircleButtonStyle}">
+        <iconPacks:PackIconMaterial Kind="WindowRestore" Height="22" Width="22" />
+    </Button>
+    <Button x:Name="ButtonClose"
+                                        Width="40"
+                                        Height="40"
+                                        Margin="10,0,0,0"
+                                        Click="ButtonClose_Click"
+                                        Style="{StaticResource AccentCircleButtonStyle}">
+        <iconPacks:PackIconMaterial Kind="WindowClose" Height="22" Width="22" />
+    </Button>
+    </StackPanel>
+    </Grid>
+    <Grid Grid.Row="1">
+        <Grid.ColumnDefinitions >
+            <ColumnDefinition Width="200" MinWidth="200" />
+            <ColumnDefinition Width="*" MinWidth="822" />
+        </Grid.ColumnDefinitions>
+        <Grid >
+            <ScrollViewer
                     Grid.Row="1"
                     Grid.RowSpan="2">
-                    <StackPanel>
-                        <Expander
+                <StackPanel>
+                    <Expander
                             Header="豆瓣精选兆赫"
                             IsExpanded="True" >
-                            <StackPanel >
+                        <StackPanel >
                             <controls:ImageRadioButton
                                     Content="发现音乐"
                                     GroupName="Menu"
@@ -235,135 +236,135 @@
                                     ImageHeight="14"
                                     ImageWidth="18"
                                     IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Home}" />
-                                <controls:ImageRadioButton
+                            <controls:ImageRadioButton
                                     Content="视频"
                                     GroupName="Menu"
                                     Image="{StaticResource Icon_Video}"
                                     ImageHeight="12"
                                     ImageWidth="18"
                                     IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Home}" />
-                                <controls:ImageRadioButton
+                            <controls:ImageRadioButton
                                     Content="朋友"
                                     GroupName="Menu"
                                     Image="{StaticResource Icon_Group}"
                                     ImageWidth="20"
                                     IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Home}" />
-                            </StackPanel>
-                        </Expander>
-                        <Expander
+                        </StackPanel>
+                    </Expander>
+                    <Expander
                             Margin="0,10,0,0"
                             Header="我的音乐"
                             IsExpanded="True">
-                            <StackPanel>
-                                <controls:ImageRadioButton
+                        <StackPanel>
+                            <controls:ImageRadioButton
                                     Content="本地音乐"
                                     GroupName="Menu"
                                     Image="{StaticResource Icon_Music}"
                                     ImageWidth="14"
                                     IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=LocalMusic}" />
-                                <controls:ImageRadioButton
+                            <controls:ImageRadioButton
                                     Content="下载管理"
                                     GroupName="Menu"
                                     Image="{StaticResource Icon_Down}"
                                     ImageHeight="16"
                                     ImageWidth="16"
                                     IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=DownLoad}" />
-                                <controls:ImageRadioButton
+                            <controls:ImageRadioButton
                                     Content="我的音乐云盘"
                                     GroupName="Menu"
                                     Image="{StaticResource Icon_Cloud}"
                                     ImageWidth="19"
                                     IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=CloudMusic}" />
-                                <controls:ImageRadioButton
+                            <controls:ImageRadioButton
                                     Content="我的电台"
                                     GroupName="Menu"
                                     Image="{StaticResource Icon_Radio}"
                                     IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Home}" />
-                                <controls:ImageRadioButton
+                            <controls:ImageRadioButton
                                     Content="我的收藏"
                                     GroupName="Menu"
                                     Image="{StaticResource Icon_Love}"
                                     ImageHeight="16"
                                     ImageWidth="16"
                                     IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Collection}" />
-                            </StackPanel>
-                        </Expander>
-                        <Expander
+                        </StackPanel>
+                    </Expander>
+                    <Expander
                             Margin="0,10,0,0"
                             Header="创建的歌单"
                             IsExpanded="True">
-                            <StackPanel >
-                                <controls:ImageRadioButton
+                        <StackPanel >
+                            <controls:ImageRadioButton
                                     Content="我喜欢的音乐"
                                     GroupName="Menu"
                                     Image="{StaticResource Icon_Like}"
                                     ImageWidth="16"
                                     IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Home}" />
-                            </StackPanel>
-                        </Expander>
-                        <Expander
+                        </StackPanel>
+                    </Expander>
+                    <Expander
                             Margin="0,10,0,0"
                             Header="收藏的歌单"
                             IsExpanded="False">
-                            <StackPanel>
-                                <controls:ImageRadioButton
+                        <StackPanel>
+                            <controls:ImageRadioButton
                                     Content="Dream.Machine 的音乐"
                                     GroupName="Menu"
                                     Image="{StaticResource Icon_MusicList}"
                                     ImageWidth="16"
                                     IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Home}" />
-                                <controls:ImageRadioButton
+                            <controls:ImageRadioButton
                                     Content="Dream.Machine 的音乐"
                                     GroupName="Menu"
                                     Image="{StaticResource Icon_MusicList}"
                                     ImageWidth="16"
                                     IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Home}" />
-                                <controls:ImageRadioButton
+                            <controls:ImageRadioButton
                                     Content="Dream.Machine 的音乐"
                                     GroupName="Menu"
                                     Image="{StaticResource Icon_MusicList}"
                                     ImageWidth="16"
                                     IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Home}" />
-                                <controls:ImageRadioButton
+                            <controls:ImageRadioButton
                                     Content="Dream.Machine 的音乐"
                                     GroupName="Menu"
                                     Image="{StaticResource Icon_MusicList}"
                                     ImageWidth="16"
                                     IsChecked="{Binding SelectMenu, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Home}" />
-                            </StackPanel>
-                        </Expander>
-                    </StackPanel>
-                </ScrollViewer>
+                        </StackPanel>
+                    </Expander>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+        <Grid Name="ChannelGrid" Grid.Column="1" Margin="0,0,0,0" Visibility="{Binding ChannelGridVisible}">
+            <ListBox x:Name="PersonalChannels" Visibility="{Binding ChannelGridVisible}" SelectedItem="{Binding CurrentChannel}" ItemsSource="{Binding AllChannel,IsAsync=True}"   Style="{DynamicResource ChannelsStyle}"   />
+        </Grid>
+        <Grid Name="ShongGrid" Grid.Column="1" Margin="0,0,0,0"  Visibility="{Binding ShongGridVisible}">
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="400"    MinWidth="400" />
+                <ColumnDefinition Width="*"  MinWidth="300" />
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" >
+                <Grid.Background>
+                    <ImageBrush ImageSource="{Binding CurrentSong.Picture}" Opacity="0.7"/>
+                </Grid.Background>
             </Grid>
-            <Grid Name="ChannelGrid" Grid.Column="1" Margin="0,0,0,0" Visibility="{Binding ChannelGridVisible}">
-                <ListBox x:Name="PersonalChannels" Visibility="{Binding ChannelGridVisible}" SelectedItem="{Binding CurrentChannel}" ItemsSource="{Binding AllChannel,IsAsync=True}"   Style="{DynamicResource ChannelsStyle}"   />
-            </Grid>
-            <Grid Name="ShongGrid" Grid.Column="1" Margin="0,0,0,0"  Visibility="{Binding ShongGridVisible}">
-                <Grid.ColumnDefinitions >
-                    <ColumnDefinition Width="400"    MinWidth="400" />
-                    <ColumnDefinition Width="*"  MinWidth="300" />
-                </Grid.ColumnDefinitions>
-                <Grid Grid.Column="0" >
-                   <Grid.Background>
-                        <ImageBrush ImageSource="{Binding CurrentSong.Picture}" Opacity="0.7"/>
-                   </Grid.Background>
-                </Grid>
-                 <ScrollViewer Grid.Column="0" Background="Transparent">
-                    <local:LyricPanel x:Name="LyricPanel" Background="Transparent">
-                        <local:LyricPanel.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </local:LyricPanel.RenderTransform>
-                        <!--<local:LyricPanel.Background>
+            <ScrollViewer Grid.Column="0" Background="Transparent">
+                <local:LyricPanel x:Name="LyricPanel" Background="Transparent">
+                    <local:LyricPanel.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </local:LyricPanel.RenderTransform>
+                    <!--<local:LyricPanel.Background>
                                 <ImageBrush ImageSource="{Binding CurrentSong.Picture}" Opacity="0.5"/>
                             </local:LyricPanel.Background>-->
-                    </local:LyricPanel> 
-                 </ScrollViewer>
-                <DataGrid x:Name="MetroDataGrid" 
+                </local:LyricPanel>
+            </ScrollViewer>
+            <DataGrid x:Name="MetroDataGrid" 
                                 Grid.Column="1"
                                 Margin="5"
                                 AutoGenerateColumns="False"
@@ -373,16 +374,16 @@
                                 SelectionUnit="FullRow"
                                 SelectedItem="{Binding CurrentSong}"
                                 Style="{StaticResource MetroDataGrid}" MouseDown="MetroDataGrid_MouseDown">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding Album}" Header="唱片路径" />
-                        <DataGridTextColumn Binding="{Binding Rating}" Header="平均评分" />
-                        <DataGridTextColumn Binding="{Binding Artist}" Header="歌手" />
-                        <DataGridTextColumn Binding="{Binding SongID}" Header="SongID" />
-                        <DataGridTextColumn Binding="{Binding AlbumTitle}" Header="唱片标题" />
-                    </DataGrid.Columns> 
-                </DataGrid>
-            </Grid>
-     </Grid>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Album}" Header="唱片路径" />
+                    <DataGridTextColumn Binding="{Binding Rating}" Header="平均评分" />
+                    <DataGridTextColumn Binding="{Binding Artist}" Header="歌手" />
+                    <DataGridTextColumn Binding="{Binding SongID}" Header="SongID" />
+                    <DataGridTextColumn Binding="{Binding AlbumTitle}" Header="唱片标题" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Grid>
     <Border
             Grid.Row="2"
             Background="{StaticResource BottomGridColor}"
@@ -461,10 +462,10 @@
                         Text="{Binding Bass.ChannelLength, Converter={StaticResource TimeSpanToStringConverter}}" />
                 <StackPanel Grid.Column="3" Orientation="Horizontal">
                     <!--#region 声音开关-->
-                <ToggleButton Margin="15,0,0,0" Style="{StaticResource MusicVolumeButton}" IsChecked="{Binding Bass.IsMuted}"/>
-    <!--#endregion-->
-    <!--#region 音量控制-->
-    <Slider
+                    <ToggleButton Margin="15,0,0,0" Style="{StaticResource MusicVolumeButton}" IsChecked="{Binding Bass.IsMuted}"/>
+                    <!--#endregion-->
+                    <!--#region 音量控制-->
+                    <Slider
                             Grid.Column="1"
                             Width="115"
                             VerticalAlignment="Center"
@@ -474,57 +475,57 @@
                             SelectionEnd="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Value}"
                             SelectionStart="0"
                             Value="{Binding Bass.Volume}" />
-    <!--#endregion-->
-    <!--#region 循环模式-->
-    <Path
+                    <!--#endregion-->
+                    <!--#region 循环模式-->
+                    <Path
                             Width="16"
                             Height="16"
                             Margin="15,0,10,0"
                             Data="{StaticResource Icon_Love}"
                             Fill="{StaticResource TextColor}"
                             Stretch="Fill" />
-    <!--#endregion-->
-    <!--#region 歌词显示-->
-    <Image
+                    <!--#endregion-->
+                    <!--#region 歌词显示-->
+                    <Image
                             Width="35"
                             Height="35"
                             Source="Images/tt.png" />
-    <!--#endregion-->
+                    <!--#endregion-->
 
-    <!--#region 播放列表-->
+                    <!--#region 播放列表-->
 
-    <StackPanel
+                    <StackPanel
                             Margin="10,0,12,0"
                             VerticalAlignment="Center"
                             Orientation="Horizontal">
-        <Border>
-            <Path
+                        <Border>
+                            <Path
                                     Width="15"
                                     Height="15"
                                     Data="{StaticResource Icon_MusicList}"
                                     Fill="{StaticResource TextColor}"
                                     Stretch="Fill" />
-        </Border>
-        <Border
+                        </Border>
+                        <Border
                                 MinWidth="32"
                                 Padding="0,2,0,2"
                                 Background="{StaticResource SplitterColor}"
                                 CornerRadius="0,8,8,0">
-            <TextBlock
+                            <TextBlock
                                     Margin="0,0,10,0"
                                     HorizontalAlignment="Right"
                                     FontFamily="微软雅黑"
                                     FontSize="10"
                                     Foreground="{StaticResource TextColor}"
                                     Text="50" />
-        </Border>
-    </StackPanel>
-    <!--#endregion-->
-    </StackPanel>
-    </Grid>
-    </Grid>
+                        </Border>
+                    </StackPanel>
+                    <!--#endregion-->
+                </StackPanel>
+            </Grid>
+        </Grid>
     </Border>
-    <!--<ResizeGrip Grid.Row="2"  />-->
+    <ResizeGrip Grid.Row="2"  />
     </Grid>
 
 </Metro:MetroWindow>

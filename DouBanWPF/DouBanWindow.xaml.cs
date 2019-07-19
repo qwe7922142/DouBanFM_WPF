@@ -116,5 +116,48 @@ namespace DouBanWPF
             string str = string.Format(@"http://music.douban.com/api/song/info?song_id={0}", song.SongID);
             Clipboard.SetText(str);
         }
+
+        private void ButtonMin_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void ButtonMax_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Maximized;
+            ShowOrhide();
+        }
+
+        private void ButtonNormal_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Normal;
+            ShowOrhide();
+        }
+
+        private void ButtonClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+        /// <summary>
+        /// 显示或者隐藏按钮
+        /// </summary>
+        private void ShowOrhide()
+        {
+            switch (WindowState)
+            {
+                case WindowState.Normal:
+                    ButtonNormal.Visibility = Visibility.Collapsed;
+                    ButtonMax.Visibility = Visibility.Visible;
+                    break;
+                case WindowState.Minimized:
+                    break;
+                case WindowState.Maximized:
+                    ButtonMax.Visibility = Visibility.Collapsed;
+                    ButtonNormal.Visibility = Visibility.Visible;
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }
