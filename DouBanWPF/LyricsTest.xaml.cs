@@ -20,7 +20,6 @@ namespace DouBanWPF
         {
             string str = File.ReadAllText(@"C:\C#\doubanWPF\DouBanWPF\DouBanWPF\test.lrc");
             Lyrics lyrics = new Lyrics(str);
-            //fuck.SetSource(lyrics);
             //开始刷新歌曲进度
             _progressRefreshTimer = new DispatcherTimer();
             _progressRefreshTimer.Interval = new TimeSpan(0, 0, 1);
@@ -36,7 +35,7 @@ namespace DouBanWPF
         private void timer_Tick(object sender, EventArgs e)
         {
             time = time + _progressRefreshTimer.Interval;
-            fuck.UpdatePosition(time);
+            test.UpdatePosition(time);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
