@@ -439,6 +439,7 @@
                     <ColumnDefinition />
                     <ColumnDefinition Width="Auto" MinWidth="42" />
                     <ColumnDefinition Width="Auto" MinWidth="80" />
+                    <ColumnDefinition Width="Auto"  />
                 </Grid.ColumnDefinitions>
                 <TextBlock
                         HorizontalAlignment="Center"
@@ -522,10 +523,10 @@
                     </StackPanel>
                     <!--#endregion-->
                 </StackPanel>
+                <ResizeGrip Grid.Column="4"  />
             </Grid>
         </Grid>
     </Border>
-    <ResizeGrip Grid.Row="2"  />
     </Grid>
 
 </Metro:MetroWindow>
