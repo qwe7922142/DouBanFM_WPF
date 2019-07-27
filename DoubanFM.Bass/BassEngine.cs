@@ -19,7 +19,7 @@ namespace DoubanFM.Bass
 	/// <summary>
 	/// Bass播放器
 	/// </summary>
-	public class BassEngine : WPFSoundVisualizationLib.ISpectrumPlayer, INotifyPropertyChanged, IDisposable
+	public class BassEngine :  INotifyPropertyChanged, IDisposable
 	{
 		#region Fields
 		/// <summary>

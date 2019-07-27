@@ -42,9 +42,6 @@
     <Reference Include="System.configuration" />
     <Reference Include="System.Xaml" />
     <Reference Include="WindowsBase" />
-    <Reference Include="WPFSoundVisualizationLib">
-      <HintPath>..\WPFSoundVisualizationLib.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BassEngine.cs" />
